@@ -8,8 +8,13 @@
         function __construct(){
             parent::__construct();
 
-            // load card library
+            // load card library and image upload library
             $this->load->library('cart');
+            $this->load->library('upload');
+
+            // load helper
+            $this->load->helper(array('form', 'url'));
+            
             // load product model
             $this->load->model('product');      
         }
@@ -18,7 +23,7 @@
             $data = array();
 
             // get products from the database
-            $data['products'] = $this->products->getRows();
+            $data['products'] = $this->product->getRows();
             // load the product view
             $this->load->view('products/index', $data);
         }
@@ -42,35 +47,14 @@
             // Redirect to the cart page
             redirect('cart');
         }
+        
+        // add product
+        function addProductView() {
+            echo 'not yet implemented';
+            redirect('products');
+
+           
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
